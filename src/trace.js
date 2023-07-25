@@ -167,7 +167,7 @@ export default {
 
   afterEvent: function(chart, event) {
 
-    if (chart.config.options.scales.x.length == 0) {
+    if (chart.config.options.scales.x == undefined || chart.config.options.scales.x.length == 0) {
       return
     }
 
@@ -274,7 +274,7 @@ export default {
 
   beforeTooltipDraw: function(chart) {
     // suppress tooltips on dragging
-    return !chart.crosshair.dragStarted && !chart.crosshair.suppressTooltips;
+    return chart.crosshair == undefined || !chart.crosshair.dragStarted && !chart.crosshair.suppressTooltips;
   },
 
   resetZoom: function(chart) {
